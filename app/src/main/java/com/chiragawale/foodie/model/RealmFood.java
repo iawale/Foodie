@@ -1,6 +1,8 @@
 package com.chiragawale.foodie.model;
 
-public class Food {
+import io.realm.RealmObject;
+
+public class RealmFood extends RealmObject {
     String name;
     double servingSize, numberOfServings,time, calories,
             carbs,totalFat,saturatedFat,transFat,polyUnsaturatedFat,
@@ -9,7 +11,7 @@ public class Food {
             calcium,iron,potassium,vitaminA,vitaminB,vitaminC,vitaminD,
             vitaminE;
 
-    public Food(String name, double servingSize, double numberOfServings, double time, double calories, double carbs, double totalFat, double saturatedFat, double transFat, double polyUnsaturatedFat, double monoUnSaturatedFat, double protein, double cholesterol, double sodium, double totalCarbs, double dietaryFiber, double totalSugars, double addedSugars, double sugarAlcohols, double calcium, double iron, double potassium, double vitaminA, double vitaminB, double vitaminC, double vitaminD, double vitaminE) {
+    public RealmFood(String name, double servingSize, double numberOfServings, double time, double calories, double carbs, double totalFat, double saturatedFat, double transFat, double polyUnsaturatedFat, double monoUnSaturatedFat, double protein, double cholesterol, double sodium, double totalCarbs, double dietaryFiber, double totalSugars, double addedSugars, double sugarAlcohols, double calcium, double iron, double potassium, double vitaminA, double vitaminB, double vitaminC, double vitaminD, double vitaminE) {
         this.name = name;
         this.servingSize = servingSize;
         this.numberOfServings = numberOfServings;
