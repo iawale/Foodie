@@ -5,4 +5,7 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="padding_components">12dp</dimen>
+    <dimen name="margin_components">12dp</dimen>
+    <dimen name="edit_text_height">42dp</dimen>
 </resources>

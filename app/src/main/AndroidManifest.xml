@@ -15,6 +15,10 @@
             android:label="@string/title_activity_add_food"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".ui.QuickAddActivity"
+            android:label="@string/title_activity_quick_add"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>

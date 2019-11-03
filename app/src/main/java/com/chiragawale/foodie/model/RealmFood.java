@@ -7,7 +7,7 @@ public class RealmFood extends RealmObject {
     double servingSize, numberOfServings,time, calories,
             carbs,totalFat,saturatedFat,transFat,polyUnsaturatedFat,
             monoUnSaturatedFat,protein,cholesterol, sodium,
-            totalCarbs, dietaryFiber,totalSugars,addedSugars,sugarAlcohols,
+            dietaryFiber,totalSugars,addedSugars,sugarAlcohols,
             calcium,iron,potassium,vitaminA,vitaminB,vitaminC,vitaminD,
             vitaminE;
 
@@ -22,7 +22,7 @@ public class RealmFood extends RealmObject {
         this.protein = protein;
     }
 
-    public RealmFood(String name, double servingSize, double numberOfServings, double time, double calories, double carbs, double totalFat, double saturatedFat, double transFat, double polyUnsaturatedFat, double monoUnSaturatedFat, double protein, double cholesterol, double sodium, double totalCarbs, double dietaryFiber, double totalSugars, double addedSugars, double sugarAlcohols, double calcium, double iron, double potassium, double vitaminA, double vitaminB, double vitaminC, double vitaminD, double vitaminE) {
+    public RealmFood(String name, double servingSize, double numberOfServings, double time, double calories, double carbs, double totalFat, double saturatedFat, double transFat, double polyUnsaturatedFat, double monoUnSaturatedFat, double protein, double cholesterol, double sodium, double dietaryFiber, double totalSugars, double addedSugars, double sugarAlcohols, double calcium, double iron, double potassium, double vitaminA, double vitaminB, double vitaminC, double vitaminD, double vitaminE) {
         this.name = name;
         this.servingSize = servingSize;
         this.numberOfServings = numberOfServings;
@@ -37,7 +37,6 @@ public class RealmFood extends RealmObject {
         this.protein = protein;
         this.cholesterol = cholesterol;
         this.sodium = sodium;
-        this.totalCarbs = totalCarbs;
         this.dietaryFiber = dietaryFiber;
         this.totalSugars = totalSugars;
         this.addedSugars = addedSugars;
@@ -162,14 +161,6 @@ public class RealmFood extends RealmObject {
 
     public void setSodium(double sodium) {
         this.sodium = sodium;
-    }
-
-    public double getTotalCarbs() {
-        return totalCarbs;
-    }
-
-    public void setTotalCarbs(double totalCarbs) {
-        this.totalCarbs = totalCarbs;
     }
 
     public double getDietaryFiber() {
