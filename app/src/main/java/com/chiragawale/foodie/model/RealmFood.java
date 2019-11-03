@@ -11,6 +11,17 @@ public class RealmFood extends RealmObject {
             calcium,iron,potassium,vitaminA,vitaminB,vitaminC,vitaminD,
             vitaminE;
 
+    public RealmFood(){}
+
+    public RealmFood(String name, double time, double calories, double carbs, double totalFat, double protein) {
+        this.name = name;
+        this.time = time;
+        this.calories = calories;
+        this.carbs = carbs;
+        this.totalFat = totalFat;
+        this.protein = protein;
+    }
+
     public RealmFood(String name, double servingSize, double numberOfServings, double time, double calories, double carbs, double totalFat, double saturatedFat, double transFat, double polyUnsaturatedFat, double monoUnSaturatedFat, double protein, double cholesterol, double sodium, double totalCarbs, double dietaryFiber, double totalSugars, double addedSugars, double sugarAlcohols, double calcium, double iron, double potassium, double vitaminA, double vitaminB, double vitaminC, double vitaminD, double vitaminE) {
         this.name = name;
         this.servingSize = servingSize;
