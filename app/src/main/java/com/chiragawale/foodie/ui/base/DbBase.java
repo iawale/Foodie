@@ -1,12 +1,9 @@
 package com.chiragawale.foodie.ui.base;
 
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.chiragawale.foodie.migration.DbMigration;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 

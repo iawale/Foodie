@@ -1,7 +1,6 @@
 package com.chiragawale.foodie.dao.impl;
 
 import com.chiragawale.foodie.dao.FoodDao;
-import com.chiragawale.foodie.model.RealmFood;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 
 import java.text.DateFormat;

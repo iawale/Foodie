@@ -6,12 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.chiragawale.foodie.model.RealmFood;
 import com.chiragawale.foodie.model.RealmFoodEntry;
-
 import java.util.List;
 
 public class FoodLogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

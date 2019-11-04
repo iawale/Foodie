@@ -1,7 +1,5 @@
 package com.chiragawale.foodie.migration;
 
-import androidx.annotation.Nullable;
-
 import io.realm.DynamicRealm;
 import io.realm.RealmMigration;
 import io.realm.RealmSchema;
