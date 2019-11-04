@@ -3,6 +3,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.chiragawale.foodie">
 
+    <dist:module dist:instant="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,24 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.addFood.AddFoodActivity"
-            android:label="@string/title_activity_add_food"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".ui.addFood.QuickAddActivity"
-            android:label="@string/title_activity_quick_add"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.addFood.AddFoodActivity"
+            android:label="@string/title_activity_add_food"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.addFood.QuickAddActivity"
+            android:label="@string/title_activity_quick_add"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+        </activity>
     </application>
-
-    <dist:module dist:instant="true" />
 
 </manifest>
