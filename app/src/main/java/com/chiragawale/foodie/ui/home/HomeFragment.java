@@ -17,12 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chiragawale.foodie.FoodLogAdapter;
 import com.chiragawale.foodie.R;
 import com.chiragawale.foodie.model.RealmFood;
+import com.chiragawale.foodie.model.RealmFoodEntry;
+import com.chiragawale.foodie.ui.base.BaseFragment;
 
 import java.util.List;
 
 import io.realm.Realm;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private HomeViewModel homeViewModel;
     private RecyclerView recyclerView;
@@ -46,7 +48,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         Realm realm = Realm.getDefaultInstance();
-        List<RealmFood> realmFoodList = realm.where(RealmFood.class).findAll();
+        List<RealmFoodEntry> realmFoodList = foodDao.getAllFood();
 
         // specify an adapter (see also next example)
         mAdapter = new FoodLogAdapter(realmFoodList, getContext());

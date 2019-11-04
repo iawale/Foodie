@@ -9,15 +9,16 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chiragawale.foodie.model.RealmFood;
+import com.chiragawale.foodie.model.RealmFoodEntry;
 
 import java.util.List;
 
 public class FoodLogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-        private List<RealmFood> realmFoodList;
+        private List<RealmFoodEntry> realmFoodList;
         Context context;
 
         // Provide a suitable constructor (depends on the kind of dataset)
-        public FoodLogAdapter(List<RealmFood> realmFoodList, Context context) {
+        public FoodLogAdapter(List<RealmFoodEntry> realmFoodList, Context context) {
             this.realmFoodList = realmFoodList;
             this.context = context;
         }

@@ -2,51 +2,34 @@ package com.chiragawale.foodie.model;
 
 import io.realm.RealmObject;
 
-public class RealmFood extends RealmObject {
-    String name;
-    double servingSize, numberOfServings, calories,
+public class RealmFoodEntry extends RealmObject {
+    private long entryTime;
+    private int mealTimeCode;
+    private String name;
+    private double servingSize, numberOfServings, calories,
             carbs,totalFat,saturatedFat,transFat,polyUnsaturatedFat,
             monoUnSaturatedFat,protein,cholesterol, sodium,
             dietaryFiber,totalSugars,addedSugars,sugarAlcohols,
             calcium,iron,potassium,vitaminA,vitaminB,vitaminC,vitaminD,
             vitaminE;
 
-    public RealmFood(){}
-
-    public RealmFood(String name, double calories, double carbs, double totalFat, double protein) {
-        this.name = name;
-        this.calories = calories;
-        this.carbs = carbs;
-        this.totalFat = totalFat;
-        this.protein = protein;
+    public RealmFoodEntry() {
     }
 
-    public RealmFood(String name, double servingSize, double numberOfServings, double time, double calories, double carbs, double totalFat, double saturatedFat, double transFat, double polyUnsaturatedFat, double monoUnSaturatedFat, double protein, double cholesterol, double sodium, double dietaryFiber, double totalSugars, double addedSugars, double sugarAlcohols, double calcium, double iron, double potassium, double vitaminA, double vitaminB, double vitaminC, double vitaminD, double vitaminE) {
-        this.name = name;
-        this.servingSize = servingSize;
-        this.numberOfServings = numberOfServings;
-        this.calories = calories;
-        this.carbs = carbs;
-        this.totalFat = totalFat;
-        this.saturatedFat = saturatedFat;
-        this.transFat = transFat;
-        this.polyUnsaturatedFat = polyUnsaturatedFat;
-        this.monoUnSaturatedFat = monoUnSaturatedFat;
-        this.protein = protein;
-        this.cholesterol = cholesterol;
-        this.sodium = sodium;
-        this.dietaryFiber = dietaryFiber;
-        this.totalSugars = totalSugars;
-        this.addedSugars = addedSugars;
-        this.sugarAlcohols = sugarAlcohols;
-        this.calcium = calcium;
-        this.iron = iron;
-        this.potassium = potassium;
-        this.vitaminA = vitaminA;
-        this.vitaminB = vitaminB;
-        this.vitaminC = vitaminC;
-        this.vitaminD = vitaminD;
-        this.vitaminE = vitaminE;
+    public long getEntryTime() {
+        return entryTime;
+    }
+
+    public void setEntryTime(long entryTime) {
+        this.entryTime = entryTime;
+    }
+
+    public int getMealTimeCode() {
+        return mealTimeCode;
+    }
+
+    public void setMealTimeCode(int mealTimeCode) {
+        this.mealTimeCode = mealTimeCode;
     }
 
     public String getName() {
@@ -249,4 +232,3 @@ public class RealmFood extends RealmObject {
         this.vitaminE = vitaminE;
     }
 }
-
