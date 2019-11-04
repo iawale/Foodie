@@ -3,7 +3,7 @@ package com.chiragawale.foodie;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.chiragawale.foodie.ui.AddFoodActivity;
+import com.chiragawale.foodie.ui.addFood.AddFoodActivity;
 import com.chiragawale.foodie.ui.base.BaseActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

@@ -1,4 +1,4 @@
-package com.chiragawale.foodie.ui;
+package com.chiragawale.foodie.ui.addFood;
 
 import android.os.Bundle;
 import android.view.View;

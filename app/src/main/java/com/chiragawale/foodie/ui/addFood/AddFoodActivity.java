@@ -1,8 +1,9 @@
-package com.chiragawale.foodie.ui;
+package com.chiragawale.foodie.ui.addFood;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.chiragawale.foodie.ui.SectionsPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;

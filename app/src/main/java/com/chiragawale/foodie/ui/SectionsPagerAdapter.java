@@ -1,7 +1,6 @@
 package com.chiragawale.foodie.ui;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -10,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.chiragawale.foodie.R;
+import com.chiragawale.foodie.ui.addFood.AddFoodFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

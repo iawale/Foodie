@@ -1,4 +1,4 @@
-package com.chiragawale.foodie.ui;
+package com.chiragawale.foodie.ui.addFood;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.chiragawale.foodie.R;
+import com.chiragawale.foodie.ui.PageViewModel;
 
 /**
  * A placeholder fragment containing a simple view.

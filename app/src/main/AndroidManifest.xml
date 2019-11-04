@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.AddFoodActivity"
+            android:name=".ui.addFood.AddFoodActivity"
             android:label="@string/title_activity_add_food"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".ui.QuickAddActivity"
+            android:name=".ui.addFood.QuickAddActivity"
             android:label="@string/title_activity_quick_add"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
