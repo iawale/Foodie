@@ -25,10 +25,11 @@ import android.widget.Toast;
 
 import com.chiragawale.foodie.MainActivity;
 import com.chiragawale.foodie.R;
+import com.chiragawale.foodie.ui.base.DbBase;
 import com.chiragawale.foodie.ui.login.LoginViewModel;
 import com.chiragawale.foodie.ui.login.LoginViewModelFactory;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends DbBase {
 
     private LoginViewModel loginViewModel;
 

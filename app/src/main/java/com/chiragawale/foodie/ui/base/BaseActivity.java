@@ -13,7 +13,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmMigration;
 
-public class BaseActivity extends DbBase {
+public class BaseActivity extends AppCompatActivity {
     public static FoodDao foodDao;
 
     @Override
