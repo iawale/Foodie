@@ -6,4 +6,5 @@ import java.util.List;
 public interface FoodDao {
     void quickAddFood(final RealmFoodEntry food);
     List<RealmFoodEntry> getAllFood();
+    List<RealmFoodEntry> getFoodByDate(int daysFromToday);
 }

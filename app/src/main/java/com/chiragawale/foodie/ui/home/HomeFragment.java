@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
 
         Realm realm = Realm.getDefaultInstance();
-        List<RealmFoodEntry> realmFoodList = foodDao.getAllFood();
+        List<RealmFoodEntry> realmFoodList = foodDao.getFoodByDate(-1);
 
         // specify an adapter (see also next example)
         mAdapter = new FoodLogAdapter(realmFoodList, getContext());
