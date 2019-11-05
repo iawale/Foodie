@@ -2,6 +2,7 @@ package com.chiragawale.foodie.dao.impl;
 
 import com.chiragawale.foodie.dao.FoodDao;
 import com.chiragawale.foodie.model.RealmFoodEntry;
+import com.chiragawale.foodie.utilities.TimeUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,12 +15,6 @@ import io.realm.Realm;
 public class FoodDaoImpl  implements FoodDao {
     private Realm realm = Realm.getDefaultInstance();
     private Calendar calobj = Calendar.getInstance();
-
-    public String getDate(){
-        DateFormat df = new SimpleDateFormat("dd/MM/yy");
-        System.out.println(df.format(calobj.getTime()));
-        return df.format(calobj.getTime());
-    }
 
     @Override
     public void quickAddFood(final RealmFoodEntry food) {
@@ -41,5 +36,10 @@ public class FoodDaoImpl  implements FoodDao {
     @Override
     public List<RealmFoodEntry> getAllFood() {
         return realm.where(RealmFoodEntry.class).findAll();
+    }
+
+    @Override
+    public List<RealmFoodEntry> getFoodByDate(int daysFromToday) {
+        return realm.where(RealmFoodEntry.class).greaterThanOrEqualTo("entryTime",TimeUtils.getDate(daysFromToday)).lessThan("entryTime",TimeUtils.getDate(daysFromToday+1)).findAll();
     }
 }
