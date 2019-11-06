@@ -42,37 +42,63 @@ public class HomeFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    int leftPageDays = -2;
+    int rightPageDays = 2;
+    int rightPagePosition = 2;
 
     private List<View> viewsList;
     private Pager pagerAdapter;
     private List<String> titlesList;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater,
+                             final ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        ViewPager viewPager = root.findViewById(R.id.viewpager);
+        viewPager = root.findViewById(R.id.viewpager);
         TabLayout tabLayout = root.findViewById(R.id.tabs);
         viewsList = new ArrayList<>();
-        viewsList.add(getView(inflater,container,-2));
         viewsList.add(getView(inflater,container,-1));
         viewsList.add(getView(inflater,container,-0));
         viewsList.add(getView(inflater,container,1));
-        viewsList.add(getView(inflater,container,2));
 
         titlesList = new ArrayList<>();
-        titlesList.add(TimeUtils.getFormattedDate(-2)+"");
         titlesList.add(TimeUtils.getFormattedDate(-1)+"");
         titlesList.add(TimeUtils.getFormattedDate(0)+"");
         titlesList.add(TimeUtils.getFormattedDate(1)+"");
-        titlesList.add(TimeUtils.getFormattedDate(2)+"");
 
         // add views which we want to set as pages
         pagerAdapter = new Pager(viewsList, getContext(),titlesList);
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.setCurrentItem(1);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position==0){
+//                    pagerAdapter.removeView(2);
+//                    pagerAdapter.addView(getView(inflater,container,-2),TimeUtils.getFormatedDate(-2),0);
+                      addView(getView(inflater,container,leftPageDays),0,leftPageDays);
+                      leftPageDays --;
+                } else if(position == viewsList.size() - 1){
+                      addView(getView(inflater,container,rightPageDays), viewsList.size(), rightPageDays);
+                      rightPageDays++;
+//                    pagerAdapter.removeView(0);
+//                    pagerAdapter.addView(getView(inflater,container,2),TimeUtils.getFormatedDate(2),2);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return root;
     }
 
@@ -108,9 +134,13 @@ public class HomeFragment extends BaseFragment {
 //      viewPager.setCurrentItem(position);
     }
 
-    public void addView(View view, int position){
+    public void addView(View view, int position, int days){
         viewsList.add(position, view);
+        titlesList.add(position,TimeUtils.getFormattedDate(days));
         pagerAdapter.notifyDataSetChanged();
+        if(position == 0) {
+            viewPager.setCurrentItem(position + 1);
+        }else viewPager.setCurrentItem(position-1);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
