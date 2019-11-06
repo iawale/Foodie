@@ -1,5 +1,7 @@
 package com.chiragawale.foodie.dao.impl;
 
+import android.util.Log;
+
 import com.chiragawale.foodie.dao.FoodDao;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 import com.chiragawale.foodie.utilities.TimeUtils;
@@ -40,6 +42,7 @@ public class FoodDaoImpl  implements FoodDao {
 
     @Override
     public List<RealmFoodEntry> getFoodByDate(int daysFromToday) {
+        Log.e("DATE LOG ", TimeUtils.getFormattedDate(daysFromToday) +  " TO  " + TimeUtils.getFormattedDate(daysFromToday+1));
         return realm.where(RealmFoodEntry.class).greaterThanOrEqualTo("entryTime",TimeUtils.getDate(daysFromToday)).lessThan("entryTime",TimeUtils.getDate(daysFromToday+1)).findAll();
     }
 }
