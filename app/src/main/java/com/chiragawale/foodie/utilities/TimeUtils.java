@@ -105,4 +105,10 @@ public class TimeUtils {
         return getTrimmedDate(cal.getTimeInMillis());
     }
 
+    public static String getFormattedDate(int days) {
+        SimpleDateFormat dateformat = new SimpleDateFormat("EEE dd, MMMM yyyy");
+        String datetime = dateformat.format(getDate(days));
+        return datetime;
+    }
+
 }
