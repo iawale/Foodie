@@ -12,11 +12,15 @@ public class DbBase extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Realm.init(this);
+//        RealmConfiguration config = new RealmConfiguration.Builder()
+//                .name("myrealm.realm")
+//                .schemaVersion(2) // Must be bumped when the schema changes
+//                .migration(new DbMigration() {}) // Migration to run instead of throwing an exception
+//                .build();
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .name("myrealm.realm")
                 .schemaVersion(2) // Must be bumped when the schema changes
-                .migration(new DbMigration() {
-                }) // Migration to run instead of throwing an exception
+                .deleteRealmIfMigrationNeeded() // Migration to run instead of throwing an exception
                 .build();
         Realm.setDefaultConfiguration(config);
     }
