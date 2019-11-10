@@ -23,7 +23,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_above="@id/nav_view"/>
+        android:layout_above="@id/nav_view"
+        android:visibility="gone"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

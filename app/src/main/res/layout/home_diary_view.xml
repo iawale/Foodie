@@ -20,15 +20,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_snacks"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/half_padding_components"
-                    android:text="@string/snacks"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/tv_snacks"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/half_padding_components"
+                        android:text="@string/snacks"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btn_add_snacks"
+                        android:text="@string/add"/>
+                </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_snacks"
                     android:layout_width="match_parent"
@@ -50,14 +62,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_breakfast"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/half_padding_components"
-                    android:text="@string/breakfast"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_breakfast"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/half_padding_components"
+                        android:text="@string/breakfast"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btn_add_breakfast"
+                        android:text="@string/add"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_breakfast"
@@ -80,14 +105,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_lunch"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/half_padding_components"
-                    android:text="@string/lunch"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_lunch"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/half_padding_components"
+                        android:text="@string/lunch"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btn_add_lunch"
+                        android:text="@string/add"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_lunch"
@@ -110,14 +148,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_dinner"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/half_padding_components"
-                    android:text="@string/dinner"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dinner"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/half_padding_components"
+                        android:text="@string/dinner"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btn_add_dinner"
+                        android:text="@string/add"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_dinner"
