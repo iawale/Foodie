@@ -4,15 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,10 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.chiragawale.foodie.FoodLogAdapter;
 import com.chiragawale.foodie.R;
-import com.chiragawale.foodie.model.RealmFood;
 import com.chiragawale.foodie.model.RealmFoodEntry;
-import com.chiragawale.foodie.ui.DiaryFragment;
-import com.chiragawale.foodie.ui.PlaceholderFragment;
 import com.chiragawale.foodie.ui.base.BaseFragment;
 import com.chiragawale.foodie.utilities.TimeUtils;
 import com.google.android.material.tabs.TabLayout;
@@ -35,17 +27,18 @@ import java.util.List;
 import io.realm.Realm;
 
 public class HomeFragment extends BaseFragment {
+    private final int SNACKS_MEAL_CODE = 0;
+    private final int BREAKFAST_MEAL_CODE = 1;
+    private final int LUNCH_MEAL_CODE = 2;
+    private final int DINNER_MEAL_CODE = 3;
+
     private HomeViewModel homeViewModel;
     private ViewPager viewPager;
-    private TabLayout tabLayout;
-
-    private RecyclerView recyclerView;
+    private RecyclerView rv_snacks,rv_breakfast,rv_lunch,rv_dinner;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    int leftPageDays = -2;
-    int rightPageDays = 2;
-    int rightPagePosition = 2;
-
+    private RecyclerView.LayoutManager lm_snacks,lm_breakfast,lm_lunch,lm_dinner;
+    private int leftPageDays = -2;
+    private int rightPageDays = 2;
     private List<View> viewsList;
     private Pager pagerAdapter;
     private List<String> titlesList;
@@ -104,21 +97,33 @@ public class HomeFragment extends BaseFragment {
 
     public View getView(LayoutInflater inflater, ViewGroup container, int daysFromToday){
         View root = inflater.inflate(R.layout.fragment_diary_view, container, false);
-        recyclerView = (RecyclerView) root.findViewById(R.id.my_recycler_view);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-
+        lm_snacks = new LinearLayoutManager(getContext());
+        lm_breakfast = new LinearLayoutManager(getContext());
+        lm_lunch = new LinearLayoutManager(getContext());
+        lm_dinner = new LinearLayoutManager(getContext());
         Realm realm = Realm.getDefaultInstance();
-        List<RealmFoodEntry> realmFoodList = foodDao.getFoodByDate(daysFromToday);
+        List<List<RealmFoodEntry>> realmFoodLists = foodDao.getFoodByMealCode(daysFromToday);
 
-        // specify an adapter (see also next example)
-        mAdapter = new FoodLogAdapter(realmFoodList, getContext());
-        recyclerView.setAdapter(mAdapter);
+        rv_snacks = root.findViewById(R.id.rv_snacks);
+        mAdapter = new FoodLogAdapter(realmFoodLists.get(SNACKS_MEAL_CODE), getContext());
+        rv_snacks.setAdapter(mAdapter);
+
+        rv_breakfast = root.findViewById(R.id.rv_breakfast);
+        mAdapter = new FoodLogAdapter(realmFoodLists.get(BREAKFAST_MEAL_CODE), getContext());
+        rv_breakfast.setAdapter(mAdapter);
+
+        rv_lunch = root.findViewById(R.id.rv_lunch);
+        mAdapter = new FoodLogAdapter(realmFoodLists.get(LUNCH_MEAL_CODE), getContext());
+        rv_lunch.setAdapter(mAdapter);
+
+        rv_dinner = root.findViewById(R.id.rv_dinner);
+        mAdapter = new FoodLogAdapter(realmFoodLists.get(DINNER_MEAL_CODE), getContext());
+        rv_dinner.setAdapter(mAdapter);
+
+        rv_snacks.setLayoutManager(lm_snacks);
+        rv_breakfast.setLayoutManager(lm_breakfast);
+        rv_lunch.setLayoutManager(lm_lunch);
+        rv_dinner.setLayoutManager(lm_dinner);
         return root;
     }
 
@@ -126,22 +131,16 @@ public class HomeFragment extends BaseFragment {
         viewPager.setAdapter(null);
         titlesList.remove(viewsList.indexOf(view));
         viewsList.remove(view);
-        //Adapter needs to be reinitialised with new list of views
         pagerAdapter = new Pager(viewsList, getContext(),titlesList);
         viewPager.setAdapter(pagerAdapter);
-
         pagerAdapter.notifyDataSetChanged();
-//      viewPager.setCurrentItem(position);
+        viewPager.setCurrentItem(1);
     }
 
     public void addView(View view, int position, int days){
         viewsList.add(position, view);
         titlesList.add(position,TimeUtils.getFormattedDate(days));
         pagerAdapter.notifyDataSetChanged();
-        if(position == 0) {
-            viewPager.setCurrentItem(position + 1);
-        }else if (position == 2) viewPager.setCurrentItem(position-1);
-            else viewPager.setCurrentItem(1);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
