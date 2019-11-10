@@ -16,4 +16,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="snacks">Snacks</string>
+    <string name="lunch">Lunch</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="dinner">Dinner</string>
 </resources>

@@ -68,9 +68,7 @@ public class HomeFragment extends BaseFragment {
         viewPager.setCurrentItem(1);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+                     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             @Override
             public void onPageSelected(int position) {
@@ -88,9 +86,7 @@ public class HomeFragment extends BaseFragment {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) {}
         });
         return root;
     }
@@ -141,29 +137,5 @@ public class HomeFragment extends BaseFragment {
         viewsList.add(position, view);
         titlesList.add(position,TimeUtils.getFormattedDate(days));
         pagerAdapter.notifyDataSetChanged();
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mList = new ArrayList<>();
-        private final List<String> mTitleList = new ArrayList<>();
-        public ViewPagerAdapter(FragmentManager supportFragmentManager) {
-            super(supportFragmentManager);
-        }
-        @Override
-        public Fragment getItem(int i) {
-            return mList.get(i);
-        }
-        @Override
-        public int getCount() {
-            return mList.size();
-        }
-        public void addFragment(Fragment fragment, String title) {
-            mList.add(fragment);
-            mTitleList.add(title);
-        }
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitleList.get(position);
-        }
     }
 }

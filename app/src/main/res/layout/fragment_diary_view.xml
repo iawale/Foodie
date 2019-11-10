@@ -13,23 +13,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_components"
-            android:minHeight="125dp">
+            android:minHeight="@dimen/cv_min_height_rv">
 
-            <TextView
-                android:id="@+id/tv_snacks"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Snacks"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="@dimen/half_padding_components"/>
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_snacks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/double_margin_components"
-                android:scrollbars="vertical" />
+                <TextView
+                    android:id="@+id/tv_snacks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/half_padding_components"
+                    android:text="@string/snacks"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_snacks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -37,23 +42,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cv_snacks"
-            android:layout_margin="@dimen/margin_components">
+            android:layout_margin="@dimen/margin_components"
+            android:minHeight="@dimen/cv_min_height_rv">
 
-            <TextView
-                android:id="@+id/tv_breakfast"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Breakfast"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="@dimen/half_padding_components"/>
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_breakfast"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/double_margin_components"
-                android:scrollbars="vertical" />
+                <TextView
+                    android:id="@+id/tv_breakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/half_padding_components"
+                    android:text="@string/breakfast"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_breakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -61,23 +72,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cv_breakfast"
-            android:layout_margin="@dimen/margin_components">
+            android:layout_margin="@dimen/margin_components"
+            android:minHeight="@dimen/cv_min_height_rv">
 
-            <TextView
-                android:id="@+id/tv_lunch"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lunch"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="@dimen/half_padding_components"/>
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_lunch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/double_margin_components"
-                android:scrollbars="vertical" />
+                <TextView
+                    android:id="@+id/tv_lunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/half_padding_components"
+                    android:text="@string/lunch"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_lunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -85,23 +102,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cv_lunch"
-            android:layout_margin="@dimen/margin_components">
+            android:layout_margin="@dimen/margin_components"
+            android:minHeight="@dimen/cv_min_height_rv">
 
-            <TextView
-                android:id="@+id/tv_dinner"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dinner"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:padding="@dimen/half_padding_components"/>
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_dinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/double_margin_components"
-                android:scrollbars="vertical" />
+                <TextView
+                    android:id="@+id/tv_dinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/half_padding_components"
+                    android:text="@string/dinner"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_dinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>

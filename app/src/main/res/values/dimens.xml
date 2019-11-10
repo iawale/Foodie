@@ -10,4 +10,5 @@
     <dimen name="margin_components">12dp</dimen>
     <dimen name="double_margin_components">30dp</dimen>
     <dimen name="edit_text_height">42dp</dimen>
+    <dimen name="cv_min_height_rv">130dp</dimen>
 </resources>
