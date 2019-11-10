@@ -7,4 +7,5 @@ public interface FoodDao {
     void quickAddFood(final RealmFoodEntry food);
     List<RealmFoodEntry> getAllFood();
     List<RealmFoodEntry> getFoodByDate(int daysFromToday);
+    List<List<RealmFoodEntry>>  getFoodByMealCode(int daysFromToday);
 }

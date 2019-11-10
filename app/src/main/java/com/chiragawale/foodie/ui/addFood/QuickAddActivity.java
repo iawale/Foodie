@@ -39,7 +39,7 @@ public class QuickAddActivity extends BaseActivity {
                 food.setProtein(Double.parseDouble(et_protein.getText().toString()));
                 food.setCarbs(Double.parseDouble(et_carbs.getText().toString()));
                 food.setTotalFat(Double.parseDouble(et_fat.getText().toString()));
-                food.setMealTimeCode(1);
+                food.setMealTimeCode(0);
                 foodDao.quickAddFood(food);
             }
         });

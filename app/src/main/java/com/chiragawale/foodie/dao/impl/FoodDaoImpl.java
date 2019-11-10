@@ -8,6 +8,7 @@ import com.chiragawale.foodie.utilities.TimeUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,5 +45,15 @@ public class FoodDaoImpl  implements FoodDao {
     public List<RealmFoodEntry> getFoodByDate(int daysFromToday) {
         Log.e("DATE LOG ", TimeUtils.getFormattedDate(daysFromToday) +  " TO  " + TimeUtils.getFormattedDate(daysFromToday+1));
         return realm.where(RealmFoodEntry.class).greaterThanOrEqualTo("entryTime",TimeUtils.getDate(daysFromToday)).lessThan("entryTime",TimeUtils.getDate(daysFromToday+1)).findAll();
+    }
+
+    @Override
+    public List<List<RealmFoodEntry>>  getFoodByMealCode(int daysFromToday) {
+        List<List<RealmFoodEntry>> realmFoodEntryLists = new ArrayList<>();
+        List<RealmFoodEntry> realmFoodEntries = new ArrayList<>();
+        for(int mealTimeCode = 0;mealTimeCode<4 ;mealTimeCode++) {
+            realmFoodEntryLists.add(realm.where(RealmFoodEntry.class).equalTo("mealTimeCode", mealTimeCode).greaterThanOrEqualTo("entryTime", TimeUtils.getDate(daysFromToday)).lessThan("entryTime", TimeUtils.getDate(daysFromToday + 1)).findAll());
+        }
+        return realmFoodEntryLists;
     }
 }
