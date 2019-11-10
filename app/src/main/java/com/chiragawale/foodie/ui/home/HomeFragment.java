@@ -82,15 +82,15 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 if(position==0){
-//                    pagerAdapter.removeView(2);
-//                    pagerAdapter.addView(getView(inflater,container,-2),TimeUtils.getFormatedDate(-2),0);
                       addView(getView(inflater,container,leftPageDays),0,leftPageDays);
+                      removeView(viewsList.get(viewsList.size()-1));
                       leftPageDays --;
+                      rightPageDays--;
                 } else if(position == viewsList.size() - 1){
                       addView(getView(inflater,container,rightPageDays), viewsList.size(), rightPageDays);
+                      removeView(viewsList.get(0));
                       rightPageDays++;
-//                    pagerAdapter.removeView(0);
-//                    pagerAdapter.addView(getView(inflater,container,2),TimeUtils.getFormatedDate(2),2);
+                      leftPageDays++;
                 }
             }
 
@@ -140,7 +140,8 @@ public class HomeFragment extends BaseFragment {
         pagerAdapter.notifyDataSetChanged();
         if(position == 0) {
             viewPager.setCurrentItem(position + 1);
-        }else viewPager.setCurrentItem(position-1);
+        }else if (position == 2) viewPager.setCurrentItem(position-1);
+            else viewPager.setCurrentItem(1);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
