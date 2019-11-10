@@ -38,15 +38,12 @@ public class FoodLogAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         ((ViewHolderMyLife) holder).carbs.setText(realmFoodList.get(position).getCarbs() + "");
         ((ViewHolderMyLife) holder).protein.setText(realmFoodList.get(position).getProtein() + "");
         ((ViewHolderMyLife) holder).fat.setText(realmFoodList.get(position).getTotalFat() + "");
-        ((ViewHolderMyLife) holder).ll_food.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int visibility = ((ViewHolderMyLife) holder).ll_food_detail.getVisibility();
-                if (visibility == View.VISIBLE)
-                    ((ViewHolderMyLife) holder).ll_food_detail.setVisibility(View.GONE);
-                else
-                    ((ViewHolderMyLife) holder).ll_food_detail.setVisibility(View.VISIBLE);
-            }
+        ((ViewHolderMyLife) holder).ll_food.setOnClickListener(v -> {
+            int visibility = ((ViewHolderMyLife) holder).ll_food_detail.getVisibility();
+            if (visibility == View.VISIBLE)
+                ((ViewHolderMyLife) holder).ll_food_detail.setVisibility(View.GONE);
+            else
+                ((ViewHolderMyLife) holder).ll_food_detail.setVisibility(View.VISIBLE);
         });
     }
 

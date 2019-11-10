@@ -30,12 +30,10 @@ public class MainActivity extends BaseActivity {
         NavigationUI.setupWithNavController(navView, navController);
         FloatingActionButton btn_add = findViewById(R.id.btn_add);
 
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddFoodActivity.class);
-                startActivity(intent);
-            }
+        btn_add.setOnClickListener(view -> {
+            view.setVisibility(View.GONE);
+            Intent intent = new Intent(MainActivity.this, AddFoodActivity.class);
+            startActivity(intent);
         });
     }
 

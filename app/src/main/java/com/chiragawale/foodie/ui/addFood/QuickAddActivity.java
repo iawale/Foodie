@@ -30,18 +30,15 @@ public class QuickAddActivity extends BaseActivity {
         et_fat = findViewById(R.id.et_food_fat);
         final Realm realm = Realm.getDefaultInstance();
 
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RealmFoodEntry food = new RealmFoodEntry();
-                food.setName(et_name.getText().toString());
-                food.setCalories(Double.parseDouble(et_calories.getText().toString()));
-                food.setProtein(Double.parseDouble(et_protein.getText().toString()));
-                food.setCarbs(Double.parseDouble(et_carbs.getText().toString()));
-                food.setTotalFat(Double.parseDouble(et_fat.getText().toString()));
-                food.setMealTimeCode(getIntent().getExtras().getInt("mealTimeCode"));
-                foodDao.quickAddFood(food);
-            }
+        btn_add.setOnClickListener(v -> {
+            RealmFoodEntry food = new RealmFoodEntry();
+            food.setName(et_name.getText().toString());
+            food.setCalories(Double.parseDouble(et_calories.getText().toString()));
+            food.setProtein(Double.parseDouble(et_protein.getText().toString()));
+            food.setCarbs(Double.parseDouble(et_carbs.getText().toString()));
+            food.setTotalFat(Double.parseDouble(et_fat.getText().toString()));
+            food.setMealTimeCode(getIntent().getExtras().getInt("mealTimeCode"));
+            foodDao.quickAddFood(food);
         });
     }
 }
