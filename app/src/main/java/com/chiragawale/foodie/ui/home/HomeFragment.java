@@ -71,7 +71,7 @@ public class HomeFragment extends BaseFragment {
         viewPager.setCurrentItem(1);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-                     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             @Override
             public void onPageSelected(int position) {
@@ -100,7 +100,6 @@ public class HomeFragment extends BaseFragment {
         lm_breakfast = new LinearLayoutManager(getContext());
         lm_lunch = new LinearLayoutManager(getContext());
         lm_dinner = new LinearLayoutManager(getContext());
-        Realm realm = Realm.getDefaultInstance();
         List<List<RealmFoodEntry>> realmFoodLists = foodDao.getFoodByMealCode(daysFromToday);
 
         rv_snacks = root.findViewById(R.id.rv_snacks);
