@@ -1,17 +1,22 @@
 package com.chiragawale.foodie.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.chiragawale.foodie.MainActivity;
 import com.chiragawale.foodie.R;
 import com.chiragawale.foodie.model.RealmFoodEntry;
+import com.chiragawale.foodie.ui.addFood.AddFoodActivity;
 import com.chiragawale.foodie.ui.base.BaseFragment;
 import com.chiragawale.foodie.utilities.TimeUtils;
 import com.google.android.material.tabs.TabLayout;
@@ -39,6 +44,8 @@ public class HomeFragment extends BaseFragment {
     private Pager pagerAdapter;
     private List<String> titlesList;
 
+    private Button addSnack, addBreakfast,addLunch,addDinner;
+
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -47,11 +54,11 @@ public class HomeFragment extends BaseFragment {
 
         viewPager = root.findViewById(R.id.viewpager);
         TabLayout tabLayout = root.findViewById(R.id.tabs);
+
         viewsList = new ArrayList<>();
         viewsList.add(getView(inflater,container,-1));
         viewsList.add(getView(inflater,container,-0));
         viewsList.add(getView(inflater,container,1));
-
         titlesList = new ArrayList<>();
         titlesList.add(TimeUtils.getFormattedDate(-1)+"");
         titlesList.add(TimeUtils.getFormattedDate(0)+"");
@@ -88,7 +95,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     public View getView(LayoutInflater inflater, ViewGroup container, int daysFromToday){
-        View root = inflater.inflate(R.layout.fragment_diary_view, container, false);
+        View root = inflater.inflate(R.layout.home_diary_view, container, false);
         lm_snacks = new LinearLayoutManager(getContext());
         lm_breakfast = new LinearLayoutManager(getContext());
         lm_lunch = new LinearLayoutManager(getContext());
@@ -116,6 +123,13 @@ public class HomeFragment extends BaseFragment {
         rv_breakfast.setLayoutManager(lm_breakfast);
         rv_lunch.setLayoutManager(lm_lunch);
         rv_dinner.setLayoutManager(lm_dinner);
+
+        addSnack = root.findViewById(R.id.btn_add_snacks);
+        addBreakfast = root.findViewById(R.id.btn_add_breakfast);
+        addLunch = root.findViewById(R.id.btn_add_lunch);
+        addDinner = root.findViewById(R.id.btn_add_dinner);
+        setUpButtons();
+
         return root;
     }
 
@@ -133,5 +147,24 @@ public class HomeFragment extends BaseFragment {
         viewsList.add(position, view);
         titlesList.add(position,TimeUtils.getFormattedDate(days));
         pagerAdapter.notifyDataSetChanged();
+    }
+
+    public void setUpButtons(){
+
+        addBreakfast.setOnClickListener(v ->{
+            Intent intent = new Intent(getContext(), AddFoodActivity.class);
+            intent.putExtra("mealTimeCode", BREAKFAST_MEAL_CODE);
+            startActivity(intent);
+        });
+        addLunch.setOnClickListener(v ->{
+            Intent intent = new Intent(getContext(), AddFoodActivity.class);
+            intent.putExtra("mealTimeCode", LUNCH_MEAL_CODE);
+            startActivity(intent);
+        });
+        addDinner.setOnClickListener(v ->{
+            Intent intent = new Intent(getContext(), AddFoodActivity.class);
+            intent.putExtra("mealTimeCode", DINNER_MEAL_CODE);
+            startActivity(intent);
+        });
     }
 }
