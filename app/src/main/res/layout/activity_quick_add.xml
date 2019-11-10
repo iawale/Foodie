@@ -41,7 +41,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@android:color/background_dark"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +62,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@android:color/background_dark"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +83,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@android:color/background_dark"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,7 +104,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@android:color/background_dark"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
