@@ -34,12 +34,17 @@
                         android:text="@string/snacks"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-                    <Button
+                    <ImageButton
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/half_padding_components"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
                         android:id="@+id/btn_add_snacks"
-                        android:text="@string/add"/>
+                        android:text="@string/add"
+                        android:src="@drawable/ic_fast_food"
+                        android:background="@null"/>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_snacks"
@@ -76,12 +81,17 @@
                         android:text="@string/breakfast"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-                    <Button
+                    <ImageButton
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/half_padding_components"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
                         android:id="@+id/btn_add_breakfast"
-                        android:text="@string/add"/>
+                        android:text="@string/add"
+                        android:src="@drawable/ic_fast_food"
+                        android:background="@null"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -119,12 +129,17 @@
                         android:text="@string/lunch"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-                    <Button
+                    <ImageButton
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/half_padding_components"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
                         android:id="@+id/btn_add_lunch"
-                        android:text="@string/add"/>
+                        android:text="@string/add"
+                        android:src="@drawable/ic_fast_food"
+                        android:background="@null"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -162,12 +177,17 @@
                         android:text="@string/dinner"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-                    <Button
+                    <ImageButton
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/half_padding_components"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
                         android:id="@+id/btn_add_dinner"
-                        android:text="@string/add"/>
+                        android:text="@string/add"
+                        android:src="@drawable/ic_fast_food"
+                        android:background="@null"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

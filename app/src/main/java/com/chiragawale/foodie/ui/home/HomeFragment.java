@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProviders;
@@ -44,7 +45,7 @@ public class HomeFragment extends BaseFragment {
     private Pager pagerAdapter;
     private List<String> titlesList;
 
-    private Button addSnack, addBreakfast,addLunch,addDinner;
+    private ImageButton addSnack, addBreakfast,addLunch,addDinner;
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -165,5 +166,11 @@ public class HomeFragment extends BaseFragment {
             intent.putExtra("mealTimeCode", DINNER_MEAL_CODE);
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter.notifyDataSetChanged();
     }
 }

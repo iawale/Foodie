@@ -34,7 +34,9 @@ public class QuickAddActivity extends BaseActivity {
             food.setTotalFat(getDouble(et_fat));
             food.setMealTimeCode(getIntent().getExtras().getInt("mealTimeCode"));
             foodDao.quickAddFood(food);
+            finish();
         });
+
     }
 
     public Double getDouble(TextInputEditText et) {
