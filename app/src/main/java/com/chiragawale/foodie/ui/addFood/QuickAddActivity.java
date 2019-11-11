@@ -1,13 +1,9 @@
 package com.chiragawale.foodie.ui.addFood;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import com.chiragawale.foodie.R;
-import com.chiragawale.foodie.model.RealmFood;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 import com.chiragawale.foodie.ui.base.BaseActivity;
 import com.google.android.material.textfield.TextInputEditText;
@@ -16,7 +12,7 @@ import io.realm.Realm;
 
 public class QuickAddActivity extends BaseActivity {
 
-    TextInputEditText et_name,et_calories,et_protein,et_fat,et_carbs;
+    TextInputEditText et_name, et_calories, et_protein, et_fat, et_carbs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +24,22 @@ public class QuickAddActivity extends BaseActivity {
         et_protein = findViewById(R.id.et_food_protein);
         et_carbs = findViewById(R.id.et_food_carbs);
         et_fat = findViewById(R.id.et_food_fat);
-        final Realm realm = Realm.getDefaultInstance();
 
         btn_add.setOnClickListener(v -> {
             RealmFoodEntry food = new RealmFoodEntry();
             food.setName(et_name.getText().toString());
-            food.setCalories(Double.parseDouble(et_calories.getText().toString()));
-            food.setProtein(Double.parseDouble(et_protein.getText().toString()));
-            food.setCarbs(Double.parseDouble(et_carbs.getText().toString()));
-            food.setTotalFat(Double.parseDouble(et_fat.getText().toString()));
+            food.setCalories(getDouble(et_calories));
+            food.setProtein(getDouble(et_protein));
+            food.setCarbs(getDouble(et_carbs));
+            food.setTotalFat(getDouble(et_fat));
             food.setMealTimeCode(getIntent().getExtras().getInt("mealTimeCode"));
             foodDao.quickAddFood(food);
         });
+    }
+
+    public Double getDouble(TextInputEditText et) {
+        String value = et.getText().toString();
+        if (value.matches("")) return 0.0;
+        else return Double.parseDouble(value);
     }
 }
