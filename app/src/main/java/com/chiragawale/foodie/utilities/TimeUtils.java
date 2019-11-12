@@ -79,7 +79,7 @@ public class TimeUtils {
 
     public static long getTrimmedDate(String date) {
         try {
-            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateformat = new SimpleDateFormat("EEE dd, MMMM yyyy");
             return dateformat.parse(date).getTime();
         } catch (Exception e) {
 

@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import com.chiragawale.foodie.R;
 
@@ -30,10 +31,12 @@ public class AddFoodActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(),QuickAddActivity.class);
             intent.putExtra("mealTimeCode",getIntent().getExtras().getInt("mealTimeCode"));
+            intent.putExtra("date", getIntent().getExtras().getLong("date"));
             startActivity(intent);
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-            finish();
+//            Log.e("DATE", getIntent().getExtras().getLong("date") + "");
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                    .setAction("Action", null).show();
+//            finish();
         });
     }
 }

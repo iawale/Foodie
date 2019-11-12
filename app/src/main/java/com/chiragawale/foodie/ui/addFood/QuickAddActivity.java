@@ -1,6 +1,7 @@
 package com.chiragawale.foodie.ui.addFood;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.chiragawale.foodie.R;
@@ -33,6 +34,8 @@ public class QuickAddActivity extends BaseActivity {
             food.setCarbs(getDouble(et_carbs));
             food.setTotalFat(getDouble(et_fat));
             food.setMealTimeCode(getIntent().getExtras().getInt("mealTimeCode"));
+            food.setEntryTime(getIntent().getExtras().getLong("date"));
+            Log.e("DATE", food.getEntryTime()+ "");
             foodDao.quickAddFood(food);
             finish();
         });

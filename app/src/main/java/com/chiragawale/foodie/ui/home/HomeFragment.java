@@ -2,6 +2,7 @@ package com.chiragawale.foodie.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,22 +151,18 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void setUpButtons(){
+        addSnack.setOnClickListener(v ->{ customStartActivity(SNACKS_MEAL_CODE); });
+        addBreakfast.setOnClickListener(v ->{ customStartActivity(BREAKFAST_MEAL_CODE); });
+        addLunch.setOnClickListener(v ->{ customStartActivity(LUNCH_MEAL_CODE); });
+        addDinner.setOnClickListener(v ->{ customStartActivity(DINNER_MEAL_CODE); });
+    }
 
-        addBreakfast.setOnClickListener(v ->{
-            Intent intent = new Intent(getContext(), AddFoodActivity.class);
-            intent.putExtra("mealTimeCode", BREAKFAST_MEAL_CODE);
-            startActivity(intent);
-        });
-        addLunch.setOnClickListener(v ->{
-            Intent intent = new Intent(getContext(), AddFoodActivity.class);
-            intent.putExtra("mealTimeCode", LUNCH_MEAL_CODE);
-            startActivity(intent);
-        });
-        addDinner.setOnClickListener(v ->{
-            Intent intent = new Intent(getContext(), AddFoodActivity.class);
-            intent.putExtra("mealTimeCode", DINNER_MEAL_CODE);
-            startActivity(intent);
-        });
+    public void customStartActivity(final int MEAL_CODE){
+        Intent intent = new Intent(getContext(), AddFoodActivity.class);
+        intent.putExtra("mealTimeCode", MEAL_CODE);
+        String date = titlesList.get(viewPager.getCurrentItem());
+        intent.putExtra("date", TimeUtils.getTrimmedDate(date));
+        startActivity(intent);
     }
 
     @Override

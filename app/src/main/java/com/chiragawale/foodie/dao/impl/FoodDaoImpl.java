@@ -30,7 +30,7 @@ public class FoodDaoImpl  implements FoodDao {
                 db_food.setProtein(food.getProtein());
                 db_food.setCarbs(food.getCarbs());
                 db_food.setTotalFat(food.getTotalFat());
-                db_food.setEntryTime(calobj.getTimeInMillis());
+                db_food.setEntryTime(food.getEntryTime());
                 db_food.setMealTimeCode(food.getMealTimeCode());
             }
         });
