@@ -1,2 +1,2 @@
 # Foodie
- Calorie Tracking Application
+ Calorie Tracking Android Application
