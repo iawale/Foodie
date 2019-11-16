@@ -3,6 +3,7 @@ package com.chiragawale.foodie.dao.impl;
 import com.chiragawale.foodie.dao.ProgressDao;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -26,6 +27,15 @@ public class ProgressDaoImpl implements ProgressDao {
         totalProgress[PROTEIN_PROGRESS] += checkOverFlow(protein);
         totalProgress[CALORIE_PROGRESS] += checkOverFlow(calorie);
         return totalProgress;
+    }
+
+    @Override
+    public List<Float> getCalorieData(List<RealmFoodEntry> realmFoodEntries){
+        List<Float> calData = new ArrayList<>();
+        for(RealmFoodEntry entry: realmFoodEntries){
+            calData.add((float) entry.getCalories());
+        }
+        return calData;
     }
 
     public int checkOverFlow(int nutrient){

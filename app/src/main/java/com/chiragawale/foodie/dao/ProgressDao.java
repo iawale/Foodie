@@ -11,4 +11,5 @@ public interface ProgressDao {
     int CALORIE_PROGRESS = 3;
 
     int[] getFatProgress(List<RealmFoodEntry> realmFoodEntries);
+    List<Float> getCalorieData(List<RealmFoodEntry> realmFoodEntries);
 }
