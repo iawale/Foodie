@@ -36,7 +36,7 @@ public class AddFoodActivity extends AppCompatActivity {
 //            Log.e("DATE", getIntent().getExtras().getLong("date") + "");
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show();
-//            finish();
+            finish();
         });
     }
 }
