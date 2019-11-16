@@ -22,6 +22,7 @@ import com.chiragawale.foodie.ui.addFood.AddFoodActivity;
 import com.chiragawale.foodie.ui.base.BaseFragment;
 import com.chiragawale.foodie.utilities.TimeUtils;
 import com.google.android.material.tabs.TabLayout;
+import com.lalongooo.Rings;
 
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class HomeFragment extends BaseFragment {
     private List<View> viewsList;
     private Pager pagerAdapter;
     private List<String> titlesList;
+    private Rings progress_ring;
 
     private ImageButton addSnack, addBreakfast,addLunch,addDinner;
 
@@ -129,6 +131,9 @@ public class HomeFragment extends BaseFragment {
         addBreakfast = root.findViewById(R.id.btn_add_breakfast);
         addLunch = root.findViewById(R.id.btn_add_lunch);
         addDinner = root.findViewById(R.id.btn_add_dinner);
+
+        progress_ring = root.findViewById(R.id.rings);
+        setUpRing(daysFromToday);
         setUpButtons();
 
         return root;
@@ -163,6 +168,15 @@ public class HomeFragment extends BaseFragment {
         String date = titlesList.get(viewPager.getCurrentItem());
         intent.putExtra("date", TimeUtils.getTrimmedDate(date));
         startActivity(intent);
+    }
+
+    public void setUpRing(int days){
+        int [] totalProgress = progressDao.getFatProgress(foodDao.getFoodByDate(days));
+        progress_ring.setRingInnerFirstProgress(totalProgress[progressDao.FAT_PROGRESS]);
+        progress_ring.setRingInnerSecondProgress(totalProgress[progressDao.CARBS_PROGRESS]);
+        progress_ring.setRingInnerThirdProgress(totalProgress[progressDao.PROTEIN_PROGRESS]);
+        progress_ring.setRingOverallProgress(totalProgress[progressDao.CALORIE_PROGRESS]);
+        progress_ring.setRingsClickable(true);
     }
 
     @Override

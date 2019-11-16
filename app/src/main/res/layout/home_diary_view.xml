@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical">
@@ -8,12 +11,34 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
+        <com.lalongooo.Rings
+            android:id="@+id/rings"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:rings_inner_first_color="#FF9F1C"
+            app:rings_inner_first_progress="0"
+            app:rings_inner_first_text="Fat"
+            app:rings_inner_second_color="#4BC6B9"
+            app:rings_inner_second_progress="0"
+            app:rings_inner_second_text="Carbs"
+            app:rings_inner_third_color="#757780"
+            app:rings_inner_third_progress="0"
+            app:rings_inner_third_text="Protein"
+            app:rings_overall_color="#EA3546"
+            app:rings_overall_progress="0"
+            app:rings_overall_text="Calories"
+            app:rings_text_size="20sp"
+            app:rings_unfinished_color="#f2f2f2"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/margin_components"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_snacks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_components"
-            android:minHeight="@dimen/cv_min_height_rv">
+            android:minHeight="@dimen/cv_min_height_rv"
+            android:layout_below="@id/rings">
 
             <LinearLayout
                 android:layout_width="match_parent"
