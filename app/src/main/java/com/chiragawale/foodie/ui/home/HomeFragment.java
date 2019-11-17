@@ -172,10 +172,10 @@ public class HomeFragment extends BaseFragment {
 
     public void setUpRing(int days){
         int [] totalProgress = progressDao.getFatProgress(foodDao.getFoodByDate(days));
-        progress_ring.setRingInnerFirstProgress(totalProgress[progressDao.FAT_PROGRESS]);
-        progress_ring.setRingInnerSecondProgress(totalProgress[progressDao.CARBS_PROGRESS]);
-        progress_ring.setRingInnerThirdProgress(totalProgress[progressDao.PROTEIN_PROGRESS]);
-        progress_ring.setRingOverallProgress(totalProgress[progressDao.CALORIE_PROGRESS]);
+        progress_ring.setRingInnerFirstProgress(totalProgress[progressDao.FAT_CODE]);
+        progress_ring.setRingInnerSecondProgress(totalProgress[progressDao.CARBS_CODE]);
+        progress_ring.setRingInnerThirdProgress(totalProgress[progressDao.PROTEIN_CODE]);
+        progress_ring.setRingOverallProgress(totalProgress[progressDao.CALORIE_CODE]);
         progress_ring.setRingsClickable(true);
     }
 

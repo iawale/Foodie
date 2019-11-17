@@ -29,6 +29,6 @@ public class BriefAdapter extends SparkAdapter {
 
     @Override
     public boolean hasBaseLine() {
-        return super.hasBaseLine();
+        return true;
     }
 }

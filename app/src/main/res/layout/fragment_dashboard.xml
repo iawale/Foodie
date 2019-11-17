@@ -1,19 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
 
-    <com.robinhood.spark.SparkView
-        android:id="@+id/sparkview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:spark_scrubEnabled="true" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_cal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:padding="@dimen/padding_components" />
-</RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/half_padding_components">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calorie"
+                    android:padding="@dimen/half_padding_components"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <com.robinhood.spark.SparkView
+                    android:id="@+id/sv_calories"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:spark_scrubEnabled="true" />
+
+                <TextView
+                    android:id="@+id/tv_calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="@dimen/padding_components" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_calories"
+            android:layout_margin="@dimen/half_padding_components">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/protein"
+                    android:padding="@dimen/half_padding_components"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <com.robinhood.spark.SparkView
+                    android:id="@+id/sv_protein"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:spark_scrubEnabled="true" />
+
+                <TextView
+                    android:id="@+id/tv_protein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="@dimen/padding_components" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_protein"
+            android:layout_margin="@dimen/half_padding_components">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/carbs"
+                    android:padding="@dimen/half_padding_components"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <com.robinhood.spark.SparkView
+                    android:id="@+id/sv_carbs"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:spark_scrubEnabled="true" />
+
+                <TextView
+                    android:id="@+id/tv_carbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="@dimen/padding_components" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_carbs"
+            android:layout_margin="@dimen/half_padding_components">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fat"
+                    android:padding="@dimen/half_padding_components"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_fat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="@dimen/padding_components" />
+
+                <com.robinhood.spark.SparkView
+                    android:id="@+id/sv_fat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:spark_scrubEnabled="true"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
