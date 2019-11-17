@@ -37,4 +37,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.lalongooo:rings:1.0.0'
+    implementation 'com.robinhood.spark:spark:1.2.0'
 }
