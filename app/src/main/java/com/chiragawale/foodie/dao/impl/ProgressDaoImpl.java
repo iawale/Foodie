@@ -1,5 +1,8 @@
 package com.chiragawale.foodie.dao.impl;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.chiragawale.foodie.dao.ProgressDao;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 
@@ -10,10 +13,10 @@ import io.realm.Realm;
 
 public class ProgressDaoImpl implements ProgressDao {
     private Realm realm = Realm.getDefaultInstance();
-
+    private int [] GOAL = {35,130,120,2000};
 
     @Override
-    public int [] getFatProgress(List<RealmFoodEntry> realmFoodEntries) {
+    public int [] getProgress(List<RealmFoodEntry> realmFoodEntries) {
         int [] totalProgress = new int [4];
         int fat=0,carbs=0,protein =0,calorie =0;
         for(RealmFoodEntry entry: realmFoodEntries){
@@ -22,10 +25,10 @@ public class ProgressDaoImpl implements ProgressDao {
             protein += entry.getProtein();
             calorie += entry.getCalories();
         }
-        totalProgress[FAT_CODE] += checkOverFlow(fat);
-        totalProgress[CARBS_CODE] += checkOverFlow(carbs);
-        totalProgress[PROTEIN_CODE] += checkOverFlow(protein);
-        totalProgress[CALORIE_CODE] += checkOverFlow(calorie);
+        totalProgress[FAT_CODE] += getNormalizedPercent(fat,FAT_CODE);
+        totalProgress[CARBS_CODE] += getNormalizedPercent(carbs,CARBS_CODE);
+        totalProgress[PROTEIN_CODE] += getNormalizedPercent(protein,PROTEIN_CODE);
+        totalProgress[CALORIE_CODE] += getNormalizedPercent(calorie,CALORIE_CODE);
         return totalProgress;
     }
 
@@ -49,8 +52,9 @@ public class ProgressDaoImpl implements ProgressDao {
         return dataLists;
     }
 
-    public int checkOverFlow(int nutrient){
-        if(nutrient > 100) return 100;
-            else return nutrient;
+    public int getNormalizedPercent(int nutrient, int code){
+        int percent = ((nutrient * 100)/GOAL[code]);
+        if (percent > 100) return 100;
+        else return percent;
     }
 }

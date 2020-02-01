@@ -10,6 +10,6 @@ public interface ProgressDao {
     int PROTEIN_CODE = 2;
     int CALORIE_CODE = 3;
 
-    int[] getFatProgress(List<RealmFoodEntry> realmFoodEntries);
+    int[] getProgress(List<RealmFoodEntry> realmFoodEntries);
     List<List<Float>> getProgressData(List<RealmFoodEntry> realmFoodEntries);
 }

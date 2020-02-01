@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProviders;
@@ -171,7 +172,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void setUpRing(int days){
-        int [] totalProgress = progressDao.getFatProgress(foodDao.getFoodByDate(days));
+        int [] totalProgress = progressDao.getProgress(foodDao.getFoodByDate(days));
         progress_ring.setRingInnerFirstProgress(totalProgress[progressDao.FAT_CODE]);
         progress_ring.setRingInnerSecondProgress(totalProgress[progressDao.CARBS_CODE]);
         progress_ring.setRingInnerThirdProgress(totalProgress[progressDao.PROTEIN_CODE]);
