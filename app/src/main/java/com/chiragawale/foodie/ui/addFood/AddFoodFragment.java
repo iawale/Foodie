@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.chiragawale.foodie.R;
+import com.chiragawale.foodie.data.api.DataStream;
 import com.chiragawale.foodie.ui.PageViewModel;
 
 /**
@@ -61,11 +62,13 @@ public class AddFoodFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 //                Log.e("Ay", "New text:" + s);
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                DataStream dataStream = new DataStream();
+                dataStream.getFoodData("A");
             }
         });
         return root;
