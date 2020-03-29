@@ -6,11 +6,12 @@ import java.util.List;
 
 public class BriefAdapter extends SparkAdapter {
 
-    public BriefAdapter(List<Float> yData) {
+    public BriefAdapter(List<List<Float>> yData, int CODE) {
         this.yData = yData;
+        this.code=CODE;
     }
 
-    private List<Float> yData;
+    private List<List<Float>> yData;
 
     @Override
     public int getCount() {

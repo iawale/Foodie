@@ -12,4 +12,5 @@ public interface ProgressDao {
 
     int[] getProgress(List<RealmFoodEntry> realmFoodEntries);
     List<List<Float>> getProgressData(List<RealmFoodEntry> realmFoodEntries);
+    public List<Float> getProgressByDay(List<RealmFoodEntry> realmFoodEntries);
 }

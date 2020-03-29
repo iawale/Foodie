@@ -29,15 +29,25 @@ public class DashboardFragment extends BaseFragment {
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         MorphSparkAnimator morphSparkAnimator = new MorphSparkAnimator();
         morphSparkAnimator.setDuration(2000L);
-        List<List<Float>> dataLists = progressDao.getProgressData(foodDao.getAllFood());
-        BriefAdapter mAdapter = new BriefAdapter(dataLists.get(progressDao.CALORIE_CODE));
-        SparkView sv_calories = root.findViewById(R.id.sv_calories);
-        TextView tv_cal_view = root.findViewById(R.id.tv_calories);
-        sv_calories.setAdapter(mAdapter);
-        sv_calories.setSparkAnimator(morphSparkAnimator);
-        sv_calories.setScrubListener(value -> {
-            if (value != null) tv_cal_view.setText("Calories: " + value);
-        });
+
+        List<List<Float>> dataLists= new ArrayList<>();
+
+        for(int i=0;i<30;i++) {
+            List<Float> dayData = progressDao.getProgressByDay(foodDao.getFoodByDate(0-i));
+            dataLists.add(dayData);
+        }
+
+        for(int i=0;i<30;i++) {
+            BriefAdapter mAdapter = new BriefAdapter(dataLists.get(i).get(progressDao.CALORIE_CODE),progressDao.CALORIE_CODE);
+            SparkView sv_calories = root.findViewById(R.id.sv_calories);
+            TextView tv_cal_view = root.findViewById(R.id.tv_calories);
+            sv_calories.setAdapter(mAdapter);
+            sv_calories.setSparkAnimator(morphSparkAnimator);
+            sv_calories.setScrubListener(value -> {
+                if (value != null) tv_cal_view.setText("Calories: " + value);
+            });
+        }
+
         mAdapter = new BriefAdapter(dataLists.get(progressDao.PROTEIN_CODE));
         SparkView sv_protein = root.findViewById(R.id.sv_protein);
         TextView tv_protein_view = root.findViewById(R.id.tv_protein);
@@ -46,6 +56,8 @@ public class DashboardFragment extends BaseFragment {
         sv_protein.setScrubListener(value -> {
             if (value != null) tv_protein_view.setText("Protein: " + value);
         });
+
+
         mAdapter = new BriefAdapter(dataLists.get(progressDao.CARBS_CODE));
         SparkView sv_carbs = root.findViewById(R.id.sv_carbs);
         TextView tv_carbs_view = root.findViewById(R.id.tv_carbs);
@@ -54,6 +66,8 @@ public class DashboardFragment extends BaseFragment {
         sv_carbs.setScrubListener(value -> {
             if (value != null) tv_carbs_view.setText("Carbs: " + value);
         });
+
+
         mAdapter = new BriefAdapter(dataLists.get(progressDao.FAT_CODE));
         SparkView sv_fat = root.findViewById(R.id.sv_fat);
         TextView tv_fat_view = root.findViewById(R.id.tv_fat);
