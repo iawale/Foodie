@@ -52,6 +52,23 @@ public class ProgressDaoImpl implements ProgressDao {
         return dataLists;
     }
 
+    public List<Float> getProgressByDay(List<RealmFoodEntry> realmFoodEntries){
+        List<Float> dataLists=new ArrayList<>();
+        float calData=0f,carbsData=0f,proteinData=0f,fatData=0f;
+        for(RealmFoodEntry entry: realmFoodEntries){
+            calData+=(float)entry.getCalories();
+            carbsData+=(float)entry.getCarbs();
+            proteinData+=(float) entry.getProtein();
+            fatData+=(float) entry.getTotalFat();
+        }
+        dataLists.add(fatData);
+        dataLists.add(carbsData);
+        dataLists.add(proteinData);
+        dataLists.add(calData);
+        return dataLists;
+    }
+
+
     public int getNormalizedPercent(int nutrient, int code){
         int percent = ((nutrient * 100)/GOAL[code]);
         if (percent > 100) return 100;
