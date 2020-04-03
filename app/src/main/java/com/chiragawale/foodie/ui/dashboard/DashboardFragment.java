@@ -2,10 +2,12 @@ package com.chiragawale.foodie.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Menu;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProviders;
@@ -74,5 +76,23 @@ public class DashboardFragment extends BaseFragment {
             if (value != null) tv_fat_view.setText("Fat: " + value);
         });
         return root;
+
+
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // TODO Add your menu entries here
+        inflater.inflate(R.menu.dashboard_menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+
 }
