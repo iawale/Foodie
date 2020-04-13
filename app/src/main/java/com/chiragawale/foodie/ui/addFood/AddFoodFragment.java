@@ -83,7 +83,7 @@ public class AddFoodFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText==null && newText.isEmpty()) {newText+=" ";}
+                if(newText!=null && !newText.isEmpty()){
                     DataStream dataStream = new DataStream();
                     String result = dataStream.getFoodData(newText);
                     JSONObject obj;
@@ -108,6 +108,7 @@ public class AddFoodFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                }
 
 
                 return false;
