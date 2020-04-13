@@ -1,5 +1,7 @@
 package com.chiragawale.foodie.ui.addFood;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,8 +19,10 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chiragawale.foodie.MainActivity;
 import com.chiragawale.foodie.R;
 import com.chiragawale.foodie.data.api.DataStream;
+import com.chiragawale.foodie.model.ApiFoodEntry;
 import com.chiragawale.foodie.ui.PageViewModel;
 
 import org.json.JSONArray;
@@ -39,12 +43,16 @@ public class AddFoodFragment extends Fragment {
     private SearchView et_search;
     private RecyclerView rv_search;
     private RecyclerView.Adapter aAdapter;
+    private static int mMealTimeCode;
+    private static long mEntryTime;
 
-    public static AddFoodFragment newInstance(int index) {
+    public static AddFoodFragment newInstance(int index, int mealCodeTime, long entryTime) {
         AddFoodFragment fragment = new AddFoodFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
+        mMealTimeCode=mealCodeTime;
+        mEntryTime=entryTime;
         return fragment;
     }
 
@@ -57,6 +65,7 @@ public class AddFoodFragment extends Fragment {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         pageViewModel.setIndex(index);
+
     }
 
     @Override
@@ -74,25 +83,33 @@ public class AddFoodFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 DataStream dataStream = new DataStream();
-                String result=dataStream.getFoodData(newText.toString());
+                String result=dataStream.getFoodData(newText);
                 JSONObject obj;
-                List<String> smallerList;
-                List<List<String>> largerList=new ArrayList<>();
+                //List<String> smallerList;
+                //List<List<String>> largerList=new ArrayList<>();
+                List<ApiFoodEntry> apiFoodEntryList=new ArrayList<>();
                 try {
                     String food="";
                     obj = new JSONObject(result);
                     JSONArray array=obj.getJSONArray("hints");
                     for(int i=0; i<array.length();i++){
-                        smallerList=new ArrayList<>();
-                        smallerList.add(array.getJSONObject(i).getJSONObject("food").getString("label"));
-                        smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
-                        smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
-                        smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
-                        smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
-                        largerList.add(smallerList);
+                        ApiFoodEntry apiFoodEntry=new ApiFoodEntry();
+                        apiFoodEntry.setName(array.getJSONObject(i).getJSONObject("food").getString("label"));
+                        apiFoodEntry.setCalories(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
+                        apiFoodEntry.setProtein(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
+                        apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
+                        apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
+                                //smallerList=new ArrayList<>();
+                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getString("label"));
+                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
+                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
+                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
+                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
+                        apiFoodEntryList.add(apiFoodEntry);
                     }
-                    aAdapter=new AddFoodAdapter(largerList,getContext());
+                    aAdapter=new AddFoodAdapter(apiFoodEntryList,getContext(), mMealTimeCode,mEntryTime, getActivity());
                     rv_search.setAdapter(aAdapter);
                     rv_search.setLayoutManager(new LinearLayoutManager(getContext()));
                     Log.e("names",food);
@@ -100,6 +117,7 @@ public class AddFoodFragment extends Fragment {
                     e.printStackTrace();
                 }
                 //Log.e("apiresponse",result);
+
                 return false;
             }
         });
