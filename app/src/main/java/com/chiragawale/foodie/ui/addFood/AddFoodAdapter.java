@@ -99,7 +99,6 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.ViewHold
     }
 
     public Double getDouble(String value) {
-        //String value = et.getText().toString();
         if (value.matches("")) return 0.0;
         else return Double.parseDouble(value);
     }

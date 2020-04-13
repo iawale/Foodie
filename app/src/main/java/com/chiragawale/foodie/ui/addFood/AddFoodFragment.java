@@ -83,40 +83,32 @@ public class AddFoodFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-                DataStream dataStream = new DataStream();
-                String result=dataStream.getFoodData(newText);
-                JSONObject obj;
-                //List<String> smallerList;
-                //List<List<String>> largerList=new ArrayList<>();
-                List<ApiFoodEntry> apiFoodEntryList=new ArrayList<>();
-                try {
-                    String food="";
-                    obj = new JSONObject(result);
-                    JSONArray array=obj.getJSONArray("hints");
-                    for(int i=0; i<array.length();i++){
-                        ApiFoodEntry apiFoodEntry=new ApiFoodEntry();
-                        apiFoodEntry.setName(array.getJSONObject(i).getJSONObject("food").getString("label"));
-                        apiFoodEntry.setCalories(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
-                        apiFoodEntry.setProtein(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
-                        apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
-                        apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
-                                //smallerList=new ArrayList<>();
-                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getString("label"));
-                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
-                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
-                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
-                        //smallerList.add(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
-                        apiFoodEntryList.add(apiFoodEntry);
+                if(newText==null && newText.isEmpty()) {newText+=" ";}
+                    DataStream dataStream = new DataStream();
+                    String result = dataStream.getFoodData(newText);
+                    JSONObject obj;
+                    List<ApiFoodEntry> apiFoodEntryList = new ArrayList<>();
+                    try {
+                        String food = "";
+                        obj = new JSONObject(result);
+                        JSONArray array = obj.getJSONArray("hints");
+                        for (int i = 0; i < array.length(); i++) {
+                            ApiFoodEntry apiFoodEntry = new ApiFoodEntry();
+                            apiFoodEntry.setName(array.getJSONObject(i).getJSONObject("food").getString("label"));
+                            apiFoodEntry.setCalories(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
+                            apiFoodEntry.setProtein(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
+                            apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
+                            apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
+                            apiFoodEntryList.add(apiFoodEntry);
+                        }
+                        aAdapter = new AddFoodAdapter(apiFoodEntryList, getContext(), mMealTimeCode, mEntryTime, getActivity());
+                        rv_search.setAdapter(aAdapter);
+                        rv_search.setLayoutManager(new LinearLayoutManager(getContext()));
+                        // Log.e("names",food);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    aAdapter=new AddFoodAdapter(apiFoodEntryList,getContext(), mMealTimeCode,mEntryTime, getActivity());
-                    rv_search.setAdapter(aAdapter);
-                    rv_search.setLayoutManager(new LinearLayoutManager(getContext()));
-                    Log.e("names",food);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                //Log.e("apiresponse",result);
+
 
                 return false;
             }
