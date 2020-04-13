@@ -20,10 +20,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final Context mContext;
+    private int mMealTimeCode;
+    private long mEntryTime;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, int mealTimeCode, long entryTime) {
         super(fm);
         mContext = context;
+        mMealTimeCode=mealTimeCode;
+        mEntryTime=entryTime;
     }
 
     @Override
@@ -31,7 +35,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         if(position == 0){
-            return AddFoodFragment.newInstance(position);
+            return AddFoodFragment.newInstance(position, mMealTimeCode,mEntryTime);
         } else
             return PlaceholderFragment.newInstance(position + 1);
     }

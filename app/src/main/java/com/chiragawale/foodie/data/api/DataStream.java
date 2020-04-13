@@ -15,7 +15,7 @@ public class DataStream{
         try {
             result = request.execute(url).get();
         } catch (Exception e){}
-        Log.e("RESULT", result);
+        //Log.e("RESULT", result);
         return result;
     }
 

@@ -27,6 +27,7 @@
     <string name="protein">Protein</string>
     <string name="type1">1 month</string>
     <string name="type2">3 months</string>
+    <string name="food_name">Food Name</string>
 
 
 </resources>
