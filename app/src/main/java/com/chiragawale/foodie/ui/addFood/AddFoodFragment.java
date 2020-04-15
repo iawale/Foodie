@@ -48,6 +48,7 @@ public class AddFoodFragment extends Fragment {
     private RecyclerView.Adapter aAdapter;
     private static int mMealTimeCode;
     private static long mEntryTime;
+    private boolean fromHistory;
 
     public static AddFoodFragment newInstance(int index, int mealCodeTime, long entryTime) {
         AddFoodFragment fragment = new AddFoodFragment();
@@ -126,6 +127,7 @@ public class AddFoodFragment extends Fragment {
 
     private void createHistory() {
         List<ApiFoodEntry> dataLists=foodDao.getAllFood();
+
         if(!dataLists.isEmpty()) {
             aAdapter = new AddFoodAdapter(dataLists, getContext(), mMealTimeCode, mEntryTime, getActivity());
             rv_search.setAdapter(aAdapter);

@@ -10,4 +10,5 @@ public interface FoodDao {
     List<RealmFoodEntry> getFoodByDate(int daysFromToday);
     List<List<RealmFoodEntry>>  getFoodByMealCode(int daysFromToday);
     void addSearchHistory(final ApiFoodEntry food);
+    void removeLastEntry();
 }

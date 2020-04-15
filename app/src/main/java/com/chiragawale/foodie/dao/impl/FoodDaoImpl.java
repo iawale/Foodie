@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class FoodDaoImpl  implements FoodDao {
@@ -73,5 +74,14 @@ public class FoodDaoImpl  implements FoodDao {
                 db_food.setMealTimeCode(food.getMealTimeCode());
             }
         });
+    }
+
+    //removes last entry from the realm
+    @Override
+    public void removeLastEntry() {
+        realm.beginTransaction();
+        RealmResults<ApiFoodEntry> result= realm.where(ApiFoodEntry.class).findAll();
+        result.deleteLastFromRealm();
+        realm.commitTransaction();
     }
 }
