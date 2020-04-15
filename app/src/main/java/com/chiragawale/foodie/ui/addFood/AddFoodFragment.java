@@ -77,12 +77,7 @@ public class AddFoodFragment extends Fragment {
         rv_search=root.findViewById(R.id.rv_food_item);
         et_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
+            public boolean onQueryTextSubmit(String newText) {
                 if(newText!=null && !newText.isEmpty()){
                     DataStream dataStream = new DataStream();
                     String result = dataStream.getFoodData(newText);
@@ -100,6 +95,7 @@ public class AddFoodFragment extends Fragment {
                             apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
                             apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
                             apiFoodEntryList.add(apiFoodEntry);
+                            Log.e("list",array.getJSONObject(i).getJSONObject("food").getString("label"));
                         }
                         aAdapter = new AddFoodAdapter(apiFoodEntryList, getContext(), mMealTimeCode, mEntryTime, getActivity());
                         rv_search.setAdapter(aAdapter);
@@ -109,6 +105,13 @@ public class AddFoodFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
 
 
                 return false;
