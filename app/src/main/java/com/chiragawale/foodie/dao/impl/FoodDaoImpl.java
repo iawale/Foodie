@@ -3,6 +3,7 @@ package com.chiragawale.foodie.dao.impl;
 import android.util.Log;
 
 import com.chiragawale.foodie.dao.FoodDao;
+import com.chiragawale.foodie.model.ApiFoodEntry;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 import com.chiragawale.foodie.utilities.TimeUtils;
 
@@ -37,8 +38,8 @@ public class FoodDaoImpl  implements FoodDao {
     }
 
     @Override
-    public List<RealmFoodEntry> getAllFood() {
-        return realm.where(RealmFoodEntry.class).findAll();
+        public List<ApiFoodEntry> getAllFood() {
+        return realm.where(ApiFoodEntry.class).findAll();
     }
 
     @Override
@@ -55,5 +56,22 @@ public class FoodDaoImpl  implements FoodDao {
             realmFoodEntryLists.add(realm.where(RealmFoodEntry.class).equalTo("mealTimeCode", mealTimeCode).greaterThanOrEqualTo("entryTime", TimeUtils.getDate(daysFromToday)).lessThan("entryTime", TimeUtils.getDate(daysFromToday + 1)).findAll());
         }
         return realmFoodEntryLists;
+    }
+
+    @Override
+    public void addSearchHistory(ApiFoodEntry food) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                ApiFoodEntry db_food = realm.createObject(ApiFoodEntry.class);
+                db_food.setName(food.getName());
+                db_food.setCalories(food.getCalories());
+                db_food.setProtein(food.getProtein());
+                db_food.setCarbs(food.getCarbs());
+                db_food.setFat(food.getFat());
+                db_food.setEntryTime(food.getEntryTime());
+                db_food.setMealTimeCode(food.getMealTimeCode());
+            }
+        });
     }
 }

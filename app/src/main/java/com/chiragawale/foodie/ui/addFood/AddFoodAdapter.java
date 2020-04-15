@@ -73,6 +73,16 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.ViewHold
                 Log.e("DATE", food.getEntryTime()+ "");
                 foodDao.quickAddFood(food);
 
+                ApiFoodEntry apiFood=new ApiFoodEntry();
+                apiFood.setName(list.get(position).getName());
+                apiFood.setCalories(list.get(position).getCalories());
+                apiFood.setProtein(list.get(position).getProtein());
+                apiFood.setCarbs(list.get(position).getCarbs());
+                apiFood.setFat(list.get(position).getFat());
+                apiFood.setMealTimeCode(mMealTimeCode);
+                apiFood.setEntryTime(mEntryTime);
+                foodDao.addSearchHistory(apiFood);
+
                 Toast.makeText(context,""+list.get(position).getName()+" added",Toast.LENGTH_SHORT).show();
                 mActivity.startActivity(new Intent(mActivity, MainActivity.class));
             }

@@ -32,6 +32,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.chiragawale.foodie.ui.base.BaseFragment.foodDao;
+import static com.chiragawale.foodie.ui.base.BaseFragment.progressDao;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -75,6 +78,7 @@ public class AddFoodFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_add_food, container, false);
         et_search = root.findViewById(R.id.et_search);
         rv_search=root.findViewById(R.id.rv_food_item);
+        createHistory();
         et_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String newText) {
@@ -118,5 +122,14 @@ public class AddFoodFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    private void createHistory() {
+        List<ApiFoodEntry> dataLists=foodDao.getAllFood();
+        if(!dataLists.isEmpty()) {
+            aAdapter = new AddFoodAdapter(dataLists, getContext(), mMealTimeCode, mEntryTime, getActivity());
+            rv_search.setAdapter(aAdapter);
+            rv_search.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
     }
 }
