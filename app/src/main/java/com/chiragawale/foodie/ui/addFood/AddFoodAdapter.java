@@ -3,6 +3,7 @@ package com.chiragawale.foodie.ui.addFood;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.util.TimeUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.chiragawale.foodie.model.ApiFoodEntry;
 import com.chiragawale.foodie.model.RealmFoodEntry;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Calendar;
 import java.util.List;
 
 import static com.chiragawale.foodie.ui.base.BaseFragment.foodDao;
@@ -84,9 +86,10 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.ViewHold
                 }
                 //place it in history database
                 if(!containsEntry){
-//                    if(dataLists.size()==6){
-//                        foodDao.removeLastEntry();
-//                    }
+                    if(dataLists.size()>6){
+                       long timeStamp=dataLists.get(6).getEntryTime();
+                       foodDao.removeEntry(timeStamp);
+                    }
                     ApiFoodEntry apiFood = new ApiFoodEntry();
                     apiFood.setName(list.get(position).getName());
                     apiFood.setCalories(list.get(position).getCalories());
@@ -94,7 +97,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.ViewHold
                     apiFood.setCarbs(list.get(position).getCarbs());
                     apiFood.setFat(list.get(position).getFat());
                     apiFood.setMealTimeCode(mMealTimeCode);
-                    apiFood.setEntryTime(mEntryTime);
+                    apiFood.setEntryTime(getMillis());
                     foodDao.addSearchHistory(apiFood);
                 }
 
@@ -127,5 +130,12 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.ViewHold
     public Double getDouble(String value) {
         if (value.matches("")) return 0.0;
         else return Double.parseDouble(value);
+    }
+
+    public long getMillis(){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(cal.getTime());
+        //cal.add(Calendar.DAY_OF_MONTH,days);
+        return cal.getTimeInMillis();
     }
 }

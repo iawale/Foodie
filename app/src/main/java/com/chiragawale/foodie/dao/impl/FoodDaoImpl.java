@@ -15,6 +15,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 
 public class FoodDaoImpl  implements FoodDao {
@@ -40,7 +41,7 @@ public class FoodDaoImpl  implements FoodDao {
 
     @Override
         public List<ApiFoodEntry> getAllFood() {
-        return realm.where(ApiFoodEntry.class).findAll();
+        return realm.where(ApiFoodEntry.class).sort("entryTime", Sort.DESCENDING).findAll();
     }
 
     @Override
@@ -78,10 +79,13 @@ public class FoodDaoImpl  implements FoodDao {
 
     //removes last entry from the realm
     @Override
-    public void removeLastEntry() {
-        realm.beginTransaction();
-        RealmResults<ApiFoodEntry> result= realm.where(ApiFoodEntry.class).findAll();
-        result.deleteLastFromRealm();
-        realm.commitTransaction();
+    public void removeEntry(long timeStamp) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<ApiFoodEntry> rows = realm.where(ApiFoodEntry.class).equalTo("entryTime",timeStamp).findAll();
+                rows.deleteAllFromRealm();
+            }
+        });
     }
 }
