@@ -32,6 +32,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.chiragawale.foodie.ui.base.BaseFragment.foodDao;
+import static com.chiragawale.foodie.ui.base.BaseFragment.progressDao;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -45,6 +48,7 @@ public class AddFoodFragment extends Fragment {
     private RecyclerView.Adapter aAdapter;
     private static int mMealTimeCode;
     private static long mEntryTime;
+    private boolean fromHistory;
 
     public static AddFoodFragment newInstance(int index, int mealCodeTime, long entryTime) {
         AddFoodFragment fragment = new AddFoodFragment();
@@ -75,14 +79,10 @@ public class AddFoodFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_add_food, container, false);
         et_search = root.findViewById(R.id.et_search);
         rv_search=root.findViewById(R.id.rv_food_item);
+        createHistory();
         et_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
+            public boolean onQueryTextSubmit(String newText) {
                 if(newText!=null && !newText.isEmpty()){
                     DataStream dataStream = new DataStream();
                     String result = dataStream.getFoodData(newText);
@@ -100,6 +100,7 @@ public class AddFoodFragment extends Fragment {
                             apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
                             apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
                             apiFoodEntryList.add(apiFoodEntry);
+                            Log.e("list",array.getJSONObject(i).getJSONObject("food").getString("label"));
                         }
                         aAdapter = new AddFoodAdapter(apiFoodEntryList, getContext(), mMealTimeCode, mEntryTime, getActivity());
                         rv_search.setAdapter(aAdapter);
@@ -113,7 +114,24 @@ public class AddFoodFragment extends Fragment {
 
                 return false;
             }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                return false;
+            }
         });
         return root;
+    }
+
+    private void createHistory() {
+        List<ApiFoodEntry> dataLists=foodDao.getAllFood();
+
+        if(!dataLists.isEmpty()) {
+            aAdapter = new AddFoodAdapter(dataLists, getContext(), mMealTimeCode, mEntryTime, getActivity());
+            rv_search.setAdapter(aAdapter);
+            rv_search.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
     }
 }

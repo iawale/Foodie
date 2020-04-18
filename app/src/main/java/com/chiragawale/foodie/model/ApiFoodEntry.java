@@ -1,6 +1,8 @@
 package com.chiragawale.foodie.model;
 
-public class ApiFoodEntry {
+import io.realm.RealmObject;
+
+public class ApiFoodEntry extends RealmObject {
     private long entryTime;
     private int mealTimeCode;
     private String name;
