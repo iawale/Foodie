@@ -95,12 +95,12 @@ public class AddFoodFragment extends Fragment {
                         for (int i = 0; i < array.length(); i++) {
                             ApiFoodEntry apiFoodEntry = new ApiFoodEntry();
                             apiFoodEntry.setName(array.getJSONObject(i).getJSONObject("food").getString("label"));
-                            apiFoodEntry.setCalories(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("ENERC_KCAL"));
-                            apiFoodEntry.setProtein(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("PROCNT"));
-                            apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("FAT"));
-                            apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").getString("CHOCDF"));
+                            apiFoodEntry.setCalories(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").optString("ENERC_KCAL"));
+                            apiFoodEntry.setProtein(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").optString("PROCNT"));
+                            apiFoodEntry.setFat(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").optString("FAT"));
+                            apiFoodEntry.setCarbs(array.getJSONObject(i).getJSONObject("food").getJSONObject("nutrients").optString("CHOCDF"));
                             apiFoodEntryList.add(apiFoodEntry);
-                            Log.e("list",array.getJSONObject(i).getJSONObject("food").getString("label"));
+                            //Log.e("list",array.getJSONObject(i).getJSONObject("food").getString("label"));
                         }
                         aAdapter = new AddFoodAdapter(apiFoodEntryList, getContext(), mMealTimeCode, mEntryTime, getActivity());
                         rv_search.setAdapter(aAdapter);
